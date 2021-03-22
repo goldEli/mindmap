@@ -54,12 +54,12 @@ export const useMindMap = (data) => {
     // console.log(graphRef.current?.save());
 
     return {
-      nodes: graphRef.current?.save() || [],
-      edges:
-        graphRef?.current?.cfg?.edges.map((edge) => ({
-          target: edge.getTarget()._cfg.id,
-          source: edge.getSource()._cfg.id
-        })) || []
+      nodes: graphRef.current?.save() || []
+      // edges:
+      //   graphRef?.current?.get("edges").map((edge) => ({
+      //     target: edge.getTarget().get("id"),
+      //     source: edge.getSource().get("id")
+      //   })) || []
     };
   };
   const onDel = () => {
