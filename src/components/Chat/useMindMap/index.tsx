@@ -51,15 +51,33 @@ export const useMindMap = (data) => {
   }, [data]);
 
   const getData = () => {
-    const { nodes = [], edges = [] } = graphRef?.current?.cfg;
-
     return {
       nodes: graphRef?.current?.cfg?.nodes || [],
       edges: graphRef?.current?.cfg?.edges || []
     };
   };
-  const onDel = () => {};
-  const onAdd = () => {};
+  const onDel = () => {
+    if (!selectedItems.nodes.length) return;
+    const node = selectedItems.nodes[0];
+    const model = node.getModel();
+    if (!model.children) {
+      model.children = [];
+    }
+    graphRef.current?.removeChild(model.id);
+  };
+  const onAdd = () => {
+    if (!selectedItems.nodes.length) return;
+    const node = selectedItems.nodes[0];
+    const model = node.getModel();
+    if (!model.children) {
+      model.children = [];
+    }
+    const id = `n-${Math.random()}`;
+    model.children.push({
+      id
+    });
+    graphRef.current?.updateChild(model, model.id);
+  };
 
   return {
     ref,

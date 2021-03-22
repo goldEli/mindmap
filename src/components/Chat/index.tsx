@@ -1,7 +1,4 @@
-import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
 import { data } from "./data";
-import G6 from "@antv/g6";
 import { useMindMap } from "./useMindMap";
 
 export default function () {
