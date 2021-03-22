@@ -51,9 +51,15 @@ export const useMindMap = (data) => {
   }, [data]);
 
   const getData = () => {
+    // console.log(graphRef.current?.save());
+
     return {
-      nodes: graphRef?.current?.cfg?.nodes || [],
-      edges: graphRef?.current?.cfg?.edges || []
+      nodes: graphRef.current?.save() || [],
+      edges:
+        graphRef?.current?.cfg?.edges.map((edge) => ({
+          target: edge.getTarget()._cfg.id,
+          source: edge.getSource()._cfg.id
+        })) || []
     };
   };
   const onDel = () => {
