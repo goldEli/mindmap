@@ -4,8 +4,10 @@ import { useMindMap } from "./useMindMap";
 export default function () {
   const {
     ref,
+    selectedItems,
     action: { getData, onAdd, onDel }
   } = useMindMap(data);
+  console.log(selectedItems);
 
   const onOk = () => {
     const res = getData();
